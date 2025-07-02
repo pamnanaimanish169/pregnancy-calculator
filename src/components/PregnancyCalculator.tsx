@@ -2,8 +2,10 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react';
 import { Calendar, Baby, Heart, Activity, AlertCircle, CheckCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const PregnancyCalculator = () => {
+  const { t } = useTranslation();
   const [selectedMethod, setSelectedMethod] = useState('lmp');
   const [inputs, setInputs] = useState({
     lmpDate: '',
@@ -271,27 +273,27 @@ const PregnancyCalculator = () => {
   const methods = [
     {
       id: 'lmp',
-      name: 'Last Menstrual Period',
+      name: t('methodLMP'),
       icon: Calendar,
-      description: 'Most common method using your last period date'
+      description: t('methodLMPDesc')
     },
     {
       id: 'conception',
-      name: 'Conception Date',
+      name: t('methodConception'),
       icon: Heart,
-      description: 'For tracked ovulation or known conception'
+      description: t('methodConceptionDesc')
     },
     {
       id: 'ivf',
-      name: 'IVF Transfer',
+      name: t('methodIVF'),
       icon: Activity,
-      description: 'Precise calculation for IVF pregnancies'
+      description: t('methodIVFDesc')
     },
     {
       id: 'ultrasound',
-      name: 'Ultrasound Scan',
+      name: t('methodUltrasound'),
       icon: Baby,
-      description: 'Based on fetal measurements from scan'
+      description: t('methodUltrasoundDesc')
     }
   ];
 
@@ -301,16 +303,16 @@ const PregnancyCalculator = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-            Pregnancy Due Date Calculator
+            {t('calculatorTitle')}
           </h1>
           <p className="text-gray-600 text-lg">
-            Calculate your estimated due date using multiple proven methods
+            {t('calculatorSubtitle')}
           </p>
         </div>
 
         {/* Method Selection */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Choose Calculation Method</h2>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">{t('chooseMethod')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {methods.map((method) => {
               const Icon = method.icon;
@@ -337,13 +339,13 @@ const PregnancyCalculator = () => {
 
         {/* Input Form */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Enter Your Information</h2>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">{t('enterInfo')}</h2>
           
           {selectedMethod === 'lmp' && (
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  First day of your last menstrual period
+                  {t('lmpLabel')}
                 </label>
                 <input
                   type="date"
@@ -368,7 +370,7 @@ const PregnancyCalculator = () => {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Conception date
+                  {t('conceptionLabel')}
                 </label>
                 <input
                   type="date"
@@ -393,7 +395,7 @@ const PregnancyCalculator = () => {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Embryo transfer date
+                  {t('ivfLabel')}
                 </label>
                 <input
                   type="date"
@@ -413,30 +415,16 @@ const PregnancyCalculator = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Embryo transfer day
+                  {t('embryoDayLabel')}
                 </label>
-                <div className="flex space-x-4">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="3"
-                      checked={inputs.embryoDay === '3'}
-                      onChange={(e) => handleInputChange('embryoDay', e.target.value)}
-                      className="mr-2"
-                    />
-                    3-day embryo
-                  </label>
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="5"
-                      checked={inputs.embryoDay === '5'}
-                      onChange={(e) => handleInputChange('embryoDay', e.target.value)}
-                      className="mr-2"
-                    />
-                    5-day embryo
-                  </label>
-                </div>
+                <select
+                  value={inputs.embryoDay}
+                  onChange={(e) => handleInputChange('embryoDay', e.target.value)}
+                  className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                >
+                  <option value="3">{t('embryoDay3')}</option>
+                  <option value="5">{t('embryoDay5')}</option>
+                </select>
               </div>
             </div>
           )}
@@ -445,7 +433,7 @@ const PregnancyCalculator = () => {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Ultrasound scan date
+                  {t('ultrasoundLabel')}
                 </label>
                 <input
                   type="date"
@@ -463,21 +451,20 @@ const PregnancyCalculator = () => {
                   </p>
                 )}
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
+              <div className="flex gap-4">
+                <div className="flex-1">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Gestational weeks at scan
+                    {t('gestationalWeeksLabel')}
                   </label>
                   <input
                     type="number"
-                    min="4"
-                    max="42"
+                    min={4}
+                    max={42}
                     value={inputs.gestationalWeeks}
                     onChange={(e) => handleInputChange('gestationalWeeks', e.target.value)}
                     className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                       errors.gestationalWeeks ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    placeholder="e.g., 12"
                   />
                   {errors.gestationalWeeks && (
                     <p className="mt-1 text-sm text-red-600 flex items-center">
@@ -486,20 +473,19 @@ const PregnancyCalculator = () => {
                     </p>
                   )}
                 </div>
-                <div>
+                <div className="flex-1">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Additional days
+                    {t('gestationalDaysLabel')}
                   </label>
                   <input
                     type="number"
-                    min="0"
-                    max="6"
+                    min={0}
+                    max={6}
                     value={inputs.gestationalDays}
                     onChange={(e) => handleInputChange('gestationalDays', e.target.value)}
                     className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                       errors.gestationalDays ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    placeholder="e.g., 3"
                   />
                   {errors.gestationalDays && (
                     <p className="mt-1 text-sm text-red-600 flex items-center">
@@ -511,6 +497,26 @@ const PregnancyCalculator = () => {
               </div>
             </div>
           )}
+          {errors.general && (
+            <p className="mt-4 text-sm text-red-600 flex items-center">
+              <AlertCircle className="w-4 h-4 mr-1" />
+              {t('generalError')}
+            </p>
+          )}
+          <div className="flex gap-4 mt-6">
+            <button
+              onClick={calculateResults}
+              className="bg-blue-600 text-white px-6 py-2 rounded font-semibold hover:bg-blue-700 transition-colors duration-200"
+            >
+              {t('calculateBtn')}
+            </button>
+            <button
+              onClick={resetCalculator}
+              className="bg-gray-200 text-gray-800 px-6 py-2 rounded font-semibold hover:bg-gray-300 transition-colors duration-200"
+            >
+              {t('resetBtn')}
+            </button>
+          </div>
         </div>
 
         {/* Results */}
@@ -574,16 +580,6 @@ const PregnancyCalculator = () => {
             </div>
           </div>
         )}
-
-        {/* Reset Button */}
-        <div className="text-center">
-          <button
-            onClick={resetCalculator}
-            className="bg-gray-500 hover:bg-gray-600 hover:cursor-pointer text-white px-6 py-2 rounded-lg transition-colors duration-200"
-          >
-            Reset Calculator
-          </button>
-        </div>
 
         {/* Disclaimer */}
         <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mt-6">

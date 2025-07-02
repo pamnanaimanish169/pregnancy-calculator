@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Menu, X, Calculator } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { i18n } = useTranslation();
+  const { lang } = useParams();
+  const { t } = useTranslation();
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -15,6 +20,20 @@ const Header = () => {
 
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  const getNewPath = (newLang: string) => {
+    console.log('getNewPath newLang', newLang, location.pathname)
+    // Home
+    if (location.pathname === `/${lang}`) return `/${newLang}`;
+    // About
+    if (location.pathname.includes('/about/')) return `/about/${newLang}`;
+    // Contact
+    if (location.pathname.includes('/contact/')) return `/contact/${newLang}`;
+    // Calculator
+    if (location.pathname.includes('/calculator/')) return `/calculator/${newLang}`;
+    // Default fallback
+    return `/${newLang}`;
   };
 
   return (
@@ -36,14 +55,22 @@ const Header = () => {
             {navigation.map((item) => (
               <Link
                 key={item.name}
-                to={item.href}
+                to={
+                  item.href === "/"
+                    ? `/${lang || i18n.language}`
+                    : `${item.href}/${lang || i18n.language}`
+                }
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                  isActive(item.href)
+                  isActive(
+                    item.href === "/"
+                      ? `/${lang || i18n.language}`
+                      : `${item.href}/${lang || i18n.language}`
+                  )
                     ? "text-pink-600 bg-pink-50"
                     : "text-gray-700 hover:text-pink-600 hover:bg-pink-50"
                 }`}
               >
-                {item.name}
+                {t(item.name)}
               </Link>
             ))}
           </nav>
@@ -61,6 +88,22 @@ const Header = () => {
               )}
             </button>
           </div>
+
+          <select
+            value={i18n.language}
+            onChange={e => {
+              const newLang = e.target.value;
+              navigate(getNewPath(newLang));
+              i18n.changeLanguage(newLang);
+            }}
+            className="ml-4 border rounded px-2 py-1"
+            aria-label="Select language"
+          >
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="zh">中文</option>
+            <option value="it">Italiano</option>
+          </select>
         </div>
 
         {/* Mobile Navigation */}
@@ -70,9 +113,17 @@ const Header = () => {
               {navigation.map((item) => (
                 <Link
                   key={item.name}
-                  to={item.href}
+                  to={
+                    item.href === "/"
+                      ? `/${lang || i18n.language}`
+                      : `${item.href}/${lang || i18n.language}`
+                  }
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-                    isActive(item.href)
+                    isActive(
+                      item.href === "/"
+                        ? `/${lang || i18n.language}`
+                        : `${item.href}/${lang || i18n.language}`
+                    )
                       ? "text-pink-600 bg-pink-50"
                       : "text-gray-700 hover:text-pink-600 hover:bg-pink-50"
                   }`}

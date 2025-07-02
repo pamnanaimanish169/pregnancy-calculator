@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
 import About from "./pages/About";
@@ -14,10 +14,11 @@ function App() {
         <Header />
         <main className="pt-16">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/calculator" element={<PregnancyCalculator />} />
+            <Route path="/" element={<Navigate to="/en" replace />} />
+            <Route path=":lang" element={<Home />} />
+            <Route path="about/:lang" element={<About />} />
+            <Route path="contact/:lang" element={<Contact />} />
+            <Route path="calculator/:lang" element={<PregnancyCalculator />} />
           </Routes>
         </main>
       </div>

@@ -1,6 +1,7 @@
 import { ArrowRight, BookOpen, Calendar, Heart, Users } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useSEO from "../utils/useSEO";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   useSEO({
@@ -11,26 +12,29 @@ const Home = () => {
     siteName: "Estimated Due Date Calculator"
   });
 
+  const { lang } = useParams();
+  const { t, i18n } = useTranslation();
+
   const features = [
     {
       icon: <Heart className="h-8 w-8 text-pink-500" />,
-      title: "Personalized Care",
-      description: "Track your pregnancy journey with personalized insights.",
+      title: t('personalizedCareTitle'),
+      description: t('personalizedCareDesc'),
     },
     {
       icon: <Calendar className="h-8 w-8 text-pink-500" />,
-      title: "Due Date Calculator",
-      description: "Accurately calculate your due date and track milestones.",
+      title: t('dueDateCalculatorTitle'),
+      description: t('dueDateCalculatorDesc'),
     },
     {
       icon: <Users className="h-8 w-8 text-pink-500" />,
-      title: "Expert Guidance",
-      description: "Access reliable information from medical professionals.",
+      title: t('expertGuidanceTitle'),
+      description: t('expertGuidanceDesc'),
     },
     {
       icon: <BookOpen className="h-8 w-8 text-pink-500" />,
-      title: "Educational Resources",
-      description: "Comprehensive articles for every stage of pregnancy.",
+      title: t('educationalResourcesTitle'),
+      description: t('educationalResourcesDesc'),
     },
   ];
 
@@ -41,26 +45,23 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Your Pregnancy Journey
-              <span className="text-pink-600"> Starts Here</span>
+              {t('pregnancyJourney')} <span className="text-pink-600">{t('startsHere')}</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Track your pregnancy with confidence using our accurate due date
-              calculator and comprehensive pregnancy resources.
+              {t('trackPregnancy')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/calculator"
+                to={`/calculator/${lang || i18n.language}`}
                 className="bg-pink-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors duration-200 flex items-center justify-center"
               >
-                Calculate Due Date
-                <ArrowRight className="ml-2 h-5 w-5" />
+                {t('calculateDueDate')} <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
-                to="/about"
+                to={`/about/${lang || i18n.language}`}
                 className="border-2 border-pink-600 text-pink-600 px-8 py-3 rounded-lg font-semibold hover:bg-pink-50 transition-colors duration-200"
               >
-                Learn More
+                {t('learnMore')}
               </Link>
             </div>
           </div>
@@ -72,11 +73,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Everything You Need for Your Pregnancy
+              {t('everythingYouNeed')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From due date calculation to weekly updates, we provide
-              comprehensive tools and resources.
+              {t('everythingYouNeedDesc')}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -100,7 +100,7 @@ const Home = () => {
       <section className="py-16 bg-pink-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            How It Works
+            {t('howItWorks')}
           </h2>
           <ol className="space-y-8">
             <li className="flex items-start gap-4">
@@ -109,11 +109,10 @@ const Home = () => {
               </span>
               <div>
                 <h3 className="font-semibold text-lg text-gray-900 mb-1">
-                  Enter Your Last Menstrual Period
+                  {t('step1Title')}
                 </h3>
                 <p className="text-gray-700">
-                  Provide the first day of your last menstrual period (LMP) in
-                  the calculator.
+                  {t('step1Desc')}
                 </p>
               </div>
             </li>
@@ -123,11 +122,10 @@ const Home = () => {
               </span>
               <div>
                 <h3 className="font-semibold text-lg text-gray-900 mb-1">
-                  Get Your Estimated Due Date
+                  {t('step2Title')}
                 </h3>
                 <p className="text-gray-700">
-                  The calculator uses standard medical formulas to estimate your
-                  due date.
+                  {t('step2Desc')}
                 </p>
               </div>
             </li>
@@ -137,11 +135,10 @@ const Home = () => {
               </span>
               <div>
                 <h3 className="font-semibold text-lg text-gray-900 mb-1">
-                  Explore Weekly Updates
+                  {t('step3Title')}
                 </h3>
                 <p className="text-gray-700">
-                  Learn about your baby's development and get tips for each week
-                  of pregnancy.
+                  {t('step3Desc')}
                 </p>
               </div>
             </li>
@@ -153,45 +150,39 @@ const Home = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Frequently Asked Questions
+            {t('faq')}
           </h2>
           <div className="space-y-6">
             <div>
               <h3 className="font-semibold text-lg text-pink-700">
-                How accurate is the due date calculator?
+                {t('faq1Title')}
               </h3>
               <p className="text-gray-700">
-                The calculator provides an estimate based on your last menstrual
-                period. For the most accurate results, consult your healthcare
-                provider and consider ultrasound dating.
+                {t('faq1Desc')}
               </p>
             </div>
             <div>
               <h3 className="font-semibold text-lg text-pink-700">
-                Can I use this calculator if my cycles are irregular?
+                {t('faq2Title')}
               </h3>
               <p className="text-gray-700">
-                The calculator works best for regular cycles. If your cycles are
-                irregular, the estimate may be less precise. Your doctor can
-                help with a more tailored assessment.
+                {t('faq2Desc')}
               </p>
             </div>
             <div>
               <h3 className="font-semibold text-lg text-pink-700">
-                Is my information stored?
+                {t('faq3Title')}
               </h3>
               <p className="text-gray-700">
-                No, your information is not stored or shared. All calculations
-                are done locally in your browser for your privacy.
+                {t('faq3Desc')}
               </p>
             </div>
             <div>
               <h3 className="font-semibold text-lg text-pink-700">
-                Where can I find more pregnancy resources?
+                {t('faq4Title')}
               </h3>
               <p className="text-gray-700">
-                Check our About page or consult reputable sources like the CDC,
-                Mayo Clinic, or your healthcare provider for more information.
+                {t('faq4Desc')}
               </p>
             </div>
           </div>
@@ -208,7 +199,7 @@ const Home = () => {
             Calculate your due date now and get personalized pregnancy insights.
           </p>
           <Link
-            to="/calculator"
+            to={`/calculator/${lang || i18n.language}`}
             className="bg-white text-pink-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 inline-flex items-center"
           >
             Get Started Today
