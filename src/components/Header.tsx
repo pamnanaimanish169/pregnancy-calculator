@@ -26,7 +26,7 @@ const Header = () => {
             <Link to="/" className="flex items-center space-x-2">
               <Calculator className="h-8 w-8 text-pink-500" />
               <span className="text-xl font-bold text-gray-900">
-                PregnancyCare
+                Estimated Due Date Calculator
               </span>
             </Link>
           </div>
@@ -89,4 +89,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;

@@ -1,101 +1,63 @@
-const team = [
-  {
-    name: "Dr. Olivia Smith",
-    role: "Founder & Chief Medical Officer",
-    img: "https://randomuser.me/api/portraits/women/44.jpg",
-    bio: "Obstetrician with 15+ years of experience helping mothers worldwide."
-  },
-  {
-    name: "James Lee",
-    role: "Lead Engineer",
-    img: "https://randomuser.me/api/portraits/men/32.jpg",
-    bio: "Passionate about building accessible, user-friendly health tech."
-  },
-  {
-    name: "Priya Patel",
-    role: "Content Director",
-    img: "https://randomuser.me/api/portraits/women/68.jpg",
-    bio: "Ensures all information is accurate, clear, and supportive."
-  },
-  {
-    name: "Carlos Gomez",
-    role: "Community Manager",
-    img: "https://randomuser.me/api/portraits/men/65.jpg",
-    bio: "Connects with mothers and gathers feedback to improve our platform."
-  }
-];
+import useSEO from "../utils/useSEO";
 
-const About = () => (
-  <div className="max-w-5xl mx-auto px-4 py-16">
-    {/* Company Story */}
-    <section className="mb-16">
-      <h1 className="text-4xl font-bold text-pink-700 mb-4">Our Story</h1>
-      <p className="text-lg text-gray-700 mb-4">
-        PregnancyCare was founded in 2020 with a simple mission: to empower expecting mothers with accurate, accessible, and compassionate pregnancy support. Our journey began when our founder, Dr. Olivia Smith, saw the need for a modern, digital-first approach to pregnancy care—one that combines medical expertise with technology and empathy.
-      </p>
-      <p className="text-lg text-gray-700">
-        Today, we serve thousands of mothers worldwide, providing tools, resources, and a supportive community to make every pregnancy journey a little easier and a lot more joyful.
-      </p>
-    </section>
+const About = () => {
+  useSEO({
+    title: "Estimated Due Date Calculator | About Us",
+    description: "Learn about our mission, vision, and journey at the Estimated Due Date Calculator. Discover how we support expecting mothers with reliable tools and resources.",
+    url: "https://js2ts.online/about",
+    image: "/icon.png",
+    siteName: "Estimated Due Date Calculator",
+  });
 
-    {/* Mission & Vision */}
-    <section className="mb-16 grid md:grid-cols-2 gap-8">
-      <div className="bg-pink-50 p-6 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-semibold text-pink-600 mb-2">Our Mission</h2>
-        <p className="text-gray-700">
-          To deliver trustworthy, personalized pregnancy support to every mother, everywhere.
+  return (
+    <div className="max-w-5xl mx-auto px-4 py-16">
+      {/* Company Story */}
+      <section className="mb-16">
+        <h1 className="text-4xl font-bold text-pink-700 mb-4">Our Story</h1>
+        <p className="text-lg text-gray-700 mb-4">
+          Welcome to our Estimated Due Date Calculator platform. We understand that pregnancy is a unique and special journey for every family, and we're here to provide helpful tools and information to support you along the way.
         </p>
-      </div>
-      <div className="bg-purple-50 p-6 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-semibold text-purple-600 mb-2">Our Vision</h2>
-        <p className="text-gray-700">
-          A world where every pregnancy is supported by knowledge, care, and community.
+        <p className="text-lg text-gray-700">
+          Our goal is to offer a simple, user-friendly experience that helps you track important milestones and dates during your pregnancy journey.
         </p>
-      </div>
-    </section>
+      </section>
 
-    {/* Our Journey Infographic Timeline */}
-    <section className="mb-16">
-      <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Journey</h2>
-      <div className="relative border-l-2 border-pink-200 pl-8 max-w-2xl mx-auto">
-        <div className="mb-10 flex items-center">
-          <div className="bg-pink-600 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-4">2020</div>
-          <div>
-            <div className="font-semibold text-gray-900">Founded</div>
-            <div className="text-gray-600 text-sm">PregnancyCare was founded with a vision to support expecting mothers everywhere.</div>
+      {/* Mission & Vision */}
+      <section className="mb-16 grid md:grid-cols-2 gap-8">
+        <div className="bg-pink-50 p-6 rounded-lg shadow-sm">
+          <h2 className="text-2xl font-semibold text-pink-600 mb-2">Our Mission</h2>
+          <p className="text-gray-700">
+            To deliver trustworthy, personalized pregnancy support to every mother, everywhere.
+          </p>
+        </div>
+        <div className="bg-purple-50 p-6 rounded-lg shadow-sm">
+          <h2 className="text-2xl font-semibold text-purple-600 mb-2">Our Vision</h2>
+          <p className="text-gray-700">
+            A world where every pregnancy is supported by knowledge, care, and community.
+          </p>
+        </div>
+      </section>
+
+      {/* Our Journey Infographic Timeline */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Core Values</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-pink-50 p-6 rounded-lg shadow flex flex-col items-center">
+            <h3 className="text-xl font-semibold text-pink-600 mb-2">Trust</h3>
+            <p className="text-gray-700 text-center">We are committed to providing accurate, reliable information and tools that families can depend on during their pregnancy journey.</p>
+          </div>
+          <div className="bg-purple-50 p-6 rounded-lg shadow flex flex-col items-center">
+            <h3 className="text-xl font-semibold text-purple-600 mb-2">Support</h3>
+            <p className="text-gray-700 text-center">Our platform is designed to offer guidance and encouragement, ensuring every user feels supported and empowered.</p>
+          </div>
+          <div className="bg-blue-50 p-6 rounded-lg shadow flex flex-col items-center">
+            <h3 className="text-xl font-semibold text-blue-600 mb-2">Innovation</h3>
+            <p className="text-gray-700 text-center">We continuously improve our tools and resources, embracing new ideas to better serve expecting mothers and families.</p>
           </div>
         </div>
-        <div className="mb-10 flex items-center">
-          <div className="bg-pink-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-4">2021</div>
-          <div>
-            <div className="font-semibold text-gray-900">Calculator Launched</div>
-            <div className="text-gray-600 text-sm">Released our first pregnancy due date calculator tool online.</div>
-          </div>
-        </div>
-        <div className="mb-10 flex items-center">
-          <div className="bg-pink-400 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-4">2022</div>
-          <div>
-            <div className="font-semibold text-gray-900">Mobile Support</div>
-            <div className="text-gray-600 text-sm">Optimized the platform for mobile devices for easier access.</div>
-          </div>
-        </div>
-        <div className="mb-10 flex items-center">
-          <div className="bg-pink-300 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-4">2023</div>
-          <div>
-            <div className="font-semibold text-gray-900">Educational Resources</div>
-            <div className="text-gray-600 text-sm">Added a library of articles and guides for pregnancy education.</div>
-          </div>
-        </div>
-        <div className="flex items-center">
-          <div className="bg-pink-200 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-4">2024</div>
-          <div>
-            <div className="font-semibold text-gray-900">Continuous Improvement</div>
-            <div className="text-gray-600 text-sm">Ongoing updates and new features based on user feedback.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-);
+      </section>
+    </div>
+  );
+};
 
 export default About; 

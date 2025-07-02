@@ -1,58 +1,37 @@
+import { ArrowRight, BookOpen, Calendar, Heart, Users } from "lucide-react";
 import { Link } from "react-router-dom";
-import { 
-  Heart, 
-  Calendar, 
-  Users, 
-  BookOpen, 
-  ArrowRight,
-  Shield,
-  Clock,
-  Star
-} from "lucide-react";
+import useSEO from "../utils/useSEO";
 
 const Home = () => {
+  useSEO({
+    title: "Estimated Due Date Calculator | About Us",
+    description: "Easily find your baby's due date with our free and accurate Estimated Due Date Calculator. Calculate your EDD based on your last period or conception date — quick, reliable, and doctor-recommended.",
+    url: "https://js2ts.online",
+    image: "/icon.png",
+    siteName: "Estimated Due Date Calculator"
+  });
+
   const features = [
     {
       icon: <Heart className="h-8 w-8 text-pink-500" />,
       title: "Personalized Care",
-      description: "Track your pregnancy journey with personalized insights."
+      description: "Track your pregnancy journey with personalized insights.",
     },
     {
       icon: <Calendar className="h-8 w-8 text-pink-500" />,
       title: "Due Date Calculator",
-      description: "Accurately calculate your due date and track milestones."
+      description: "Accurately calculate your due date and track milestones.",
     },
     {
       icon: <Users className="h-8 w-8 text-pink-500" />,
       title: "Expert Guidance",
-      description: "Access reliable information from medical professionals."
+      description: "Access reliable information from medical professionals.",
     },
     {
       icon: <BookOpen className="h-8 w-8 text-pink-500" />,
       title: "Educational Resources",
-      description: "Comprehensive articles for every stage of pregnancy."
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "First-time mom",
-      content: "This calculator helped me track my pregnancy perfectly. The weekly updates were invaluable!",
-      rating: 5
+      description: "Comprehensive articles for every stage of pregnancy.",
     },
-    {
-      name: "Maria Rodriguez",
-      role: "Expecting mother",
-      content: "The most accurate due date calculator I've found. Highly recommend!",
-      rating: 5
-    },
-    {
-      name: "Emily Chen",
-      role: "Second pregnancy",
-      content: "Great resource for both first-time and experienced mothers. Very user-friendly.",
-      rating: 5
-    }
   ];
 
   return (
@@ -66,8 +45,8 @@ const Home = () => {
               <span className="text-pink-600"> Starts Here</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Track your pregnancy with confidence using our accurate due date calculator 
-              and comprehensive pregnancy resources.
+              Track your pregnancy with confidence using our accurate due date
+              calculator and comprehensive pregnancy resources.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -96,8 +75,8 @@ const Home = () => {
               Everything You Need for Your Pregnancy
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From due date calculation to weekly updates, we provide comprehensive 
-              tools and resources.
+              From due date calculation to weekly updates, we provide
+              comprehensive tools and resources.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -106,15 +85,11 @@ const Home = () => {
                 key={index}
                 className="text-center p-6 rounded-lg hover:shadow-lg transition-shadow duration-200"
               >
-                <div className="flex justify-center mb-4">
-                  {feature.icon}
-                </div>
+                <div className="flex justify-center mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600">
-                  {feature.description}
-                </p>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -124,27 +99,50 @@ const Home = () => {
       {/* How It Works Section */}
       <section className="py-16 bg-pink-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How It Works</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            How It Works
+          </h2>
           <ol className="space-y-8">
             <li className="flex items-start gap-4">
-              <span className="bg-pink-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">1</span>
+              <span className="bg-pink-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">
+                1
+              </span>
               <div>
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">Enter Your Last Menstrual Period</h3>
-                <p className="text-gray-700">Provide the first day of your last menstrual period (LMP) in the calculator.</p>
+                <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                  Enter Your Last Menstrual Period
+                </h3>
+                <p className="text-gray-700">
+                  Provide the first day of your last menstrual period (LMP) in
+                  the calculator.
+                </p>
               </div>
             </li>
             <li className="flex items-start gap-4">
-              <span className="bg-pink-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">2</span>
+              <span className="bg-pink-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">
+                2
+              </span>
               <div>
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">Get Your Estimated Due Date</h3>
-                <p className="text-gray-700">The calculator uses standard medical formulas to estimate your due date.</p>
+                <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                  Get Your Estimated Due Date
+                </h3>
+                <p className="text-gray-700">
+                  The calculator uses standard medical formulas to estimate your
+                  due date.
+                </p>
               </div>
             </li>
             <li className="flex items-start gap-4">
-              <span className="bg-pink-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">3</span>
+              <span className="bg-pink-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">
+                3
+              </span>
               <div>
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">Explore Weekly Updates</h3>
-                <p className="text-gray-700">Learn about your baby's development and get tips for each week of pregnancy.</p>
+                <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                  Explore Weekly Updates
+                </h3>
+                <p className="text-gray-700">
+                  Learn about your baby's development and get tips for each week
+                  of pregnancy.
+                </p>
               </div>
             </li>
           </ol>
@@ -154,23 +152,47 @@ const Home = () => {
       {/* FAQ Section */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Frequently Asked Questions
+          </h2>
           <div className="space-y-6">
             <div>
-              <h3 className="font-semibold text-lg text-pink-700">How accurate is the due date calculator?</h3>
-              <p className="text-gray-700">The calculator provides an estimate based on your last menstrual period. For the most accurate results, consult your healthcare provider and consider ultrasound dating.</p>
+              <h3 className="font-semibold text-lg text-pink-700">
+                How accurate is the due date calculator?
+              </h3>
+              <p className="text-gray-700">
+                The calculator provides an estimate based on your last menstrual
+                period. For the most accurate results, consult your healthcare
+                provider and consider ultrasound dating.
+              </p>
             </div>
             <div>
-              <h3 className="font-semibold text-lg text-pink-700">Can I use this calculator if my cycles are irregular?</h3>
-              <p className="text-gray-700">The calculator works best for regular cycles. If your cycles are irregular, the estimate may be less precise. Your doctor can help with a more tailored assessment.</p>
+              <h3 className="font-semibold text-lg text-pink-700">
+                Can I use this calculator if my cycles are irregular?
+              </h3>
+              <p className="text-gray-700">
+                The calculator works best for regular cycles. If your cycles are
+                irregular, the estimate may be less precise. Your doctor can
+                help with a more tailored assessment.
+              </p>
             </div>
             <div>
-              <h3 className="font-semibold text-lg text-pink-700">Is my information stored?</h3>
-              <p className="text-gray-700">No, your information is not stored or shared. All calculations are done locally in your browser for your privacy.</p>
+              <h3 className="font-semibold text-lg text-pink-700">
+                Is my information stored?
+              </h3>
+              <p className="text-gray-700">
+                No, your information is not stored or shared. All calculations
+                are done locally in your browser for your privacy.
+              </p>
             </div>
             <div>
-              <h3 className="font-semibold text-lg text-pink-700">Where can I find more pregnancy resources?</h3>
-              <p className="text-gray-700">Check our About page or consult reputable sources like the CDC, Mayo Clinic, or your healthcare provider for more information.</p>
+              <h3 className="font-semibold text-lg text-pink-700">
+                Where can I find more pregnancy resources?
+              </h3>
+              <p className="text-gray-700">
+                Check our About page or consult reputable sources like the CDC,
+                Mayo Clinic, or your healthcare provider for more information.
+              </p>
             </div>
           </div>
         </div>
@@ -198,4 +220,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;
